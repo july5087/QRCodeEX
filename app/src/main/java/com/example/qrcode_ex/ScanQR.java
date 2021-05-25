@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -17,7 +18,7 @@ public class ScanQR extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_qr);
         
-        // 스캔
+        // 스캔 실행
         new IntentIntegrator(this).initiateScan();
     }
 
@@ -32,6 +33,8 @@ public class ScanQR extends AppCompatActivity {
                 // TODO
             } else{
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(result.getContents()));
+                startActivity(intent);
                 // TODO
             }
         } else{

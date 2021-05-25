@@ -22,11 +22,12 @@ public class CreateQR extends AppCompatActivity {
         setContentView(R.layout.activity_create_qr);
 
         ivQrCode = (ImageView)findViewById(R.id.iv_qr_code);
-        text = "https://www.naver.com";
+        text = "https://www.naver.com"; // 연결 주소
 
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 
         try{
+            // 연결할 주소, 바코드 포맷, 가로길이, 세로길이
             BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder(); // QR 코드 생성
             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix); // 비트맵에 적용
